@@ -1,0 +1,144 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml;
+using MainStruct;
+
+
+
+namespace TestMenuPopup
+{   
+    public partial class ГлавноеОкно : Form
+    {
+        public ГлавноеОкно()
+        {
+            InitializeComponent();
+            ЗагрузкаНастроекПрограммы();
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            СтруктураНастроекПрограммы НастройкаПрограммы;
+            НастройкаПрограммы.БазыДанных = new СтруктураНастроекБазыДанных[5];
+            НастройкаПрограммы.БазыДанных[0].Наименование = "Элемент №1";
+            НастройкаПрограммы.БазыДанных[1].Наименование = "Элемент №2";
+            НастройкаПрограммы.БазыДанных[2].Наименование = "Элемент №3";
+            НастройкаПрограммы.БазыДанных[3].Наименование = "Элемент №4";
+            НастройкаПрограммы.БазыДанных[4].Наименование = "Элемент №5";
+
+            Menu.Items.Clear();
+            for (int i = 0; i < НастройкаПрограммы.БазыДанных.Length; i++)
+            {
+                ToolStripItem НовыйЭлементМеню;
+                НовыйЭлементМеню = Menu.Items.Add(НастройкаПрограммы.БазыДанных[i].Наименование);
+            }
+            Menu.Show(MousePosition.X, MousePosition.Y);
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openFile.Title = "Укажите файл запуска 1С Предприятия 8.1";
+            openFile.Filter = "Файл запуска 1С Предприятия|1cv8.exe";
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                textBox1.Text = openFile.FileName;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ListBox СписокИспользуемыхGUID = new ListBox();
+            СписокИспользуемыхGUID.Items.Add(Convert.ToString(System.Guid.NewGuid()));
+
+            СтруктураНастроекПрограммы НастройкаПрограммы;
+            НастройкаПрограммы.СохранятьПоложениеОкна = true;
+            НастройкаПрограммы.ИмяПользователяПоУмолчанию = "Шкураев А.В.";
+            НастройкаПрограммы.ПарольПользователяПоУмолчанию = "gfhjkm123";
+
+            XmlDocument Настройки = new XmlDocument();
+            XmlWriter Dok = XmlWriter.Create(@"C:\Settings.xml");
+            Dok.WriteStartDocument();
+            Dok.WriteStartElement("НастройкиПрограммы");
+            
+            // Запись настройки "Сохранять положение окна"
+            Dok.WriteStartAttribute("СохранятьПоложениеОкна");
+            Dok.WriteValue(НастройкаПрограммы.СохранятьПоложениеОкна);
+            Dok.WriteEndAttribute();
+            // Запись настройки "Имя пользователя по умолчанию"
+            Dok.WriteStartAttribute("ИмяПользователяПоУмолчанию");
+            Dok.WriteValue(НастройкаПрограммы.ИмяПользователяПоУмолчанию);
+            Dok.WriteEndAttribute();
+            // Запись настройки "Пароль пользователя по умолчанию"
+            Dok.WriteStartAttribute("ПарольПользователяПоУмолчанию");
+            Dok.WriteValue(НастройкаПрограммы.ПарольПользователяПоУмолчанию);
+            Dok.WriteEndAttribute();
+
+            // Запись структуры баз данных в файл
+            Dok.WriteStartElement("БазыДанных");
+            
+            Dok.WriteStartElement("ГруппаБазДанных");
+            
+            Dok.WriteStartAttribute("Наименование");
+            Dok.WriteValue("1С Предприятие 7.7");
+            Dok.WriteEndAttribute();
+
+            Dok.WriteStartElement("БазаДанных");
+            Dok.WriteStartAttribute("Наименование");
+            Dok.WriteValue("ООО Алко Резерв");
+            Dok.WriteEndAttribute();
+            Dok.WriteStartAttribute("Путь");
+            Dok.WriteValue(@"Y:\AlcoReserv");
+            Dok.WriteEndAttribute();
+            Dok.WriteStartAttribute("GUID");
+            Dok.WriteValue(Convert.ToString(System.Guid.NewGuid()));
+            Dok.WriteEndAttribute();
+            Dok.WriteEndElement();
+
+            Dok.WriteStartElement("БазаДанных");
+            Dok.WriteStartAttribute("Наименование");
+            Dok.WriteValue("ООО ЦентрОптТорг");
+            Dok.WriteEndAttribute();
+            Dok.WriteStartAttribute("Путь");
+            Dok.WriteValue(@"Y:\Trade");
+            Dok.WriteEndAttribute();
+            Dok.WriteStartAttribute("GUID");
+            Dok.WriteValue(Convert.ToString(System.Guid.NewGuid()));
+            Dok.WriteEndAttribute();
+            Dok.WriteEndElement();
+
+            Dok.WriteEndElement();
+
+            Dok.WriteEndElement();
+            Dok.Close();
+            Close();
+        }
+
+        private void ДобавитьБазуДанных_Click(object sender, EventArgs e)
+        {
+            // Добавление новой базы данных
+            СтруктураНастроекБазыДанных НоваяБазаДанных;
+            SettingsDB ФормаНастроек = new SettingsDB();
+            ФормаНастроек.СоздатьБазуДанных();
+            if (ФормаНастроек.ShowDialog() == DialogResult.OK)
+            {
+                ListViewItem НоваяСтрокаСтраницы = СтраницаБазДанных.Items.Add("");
+                НоваяБазаДанных = ФормаНастроек.ТекущаяНастройка;
+                НоваяСтрокаСтраницы.SubItems.Add(НоваяБазаДанных.Наименование);
+                НоваяСтрокаСтраницы.SubItems.Add(@"Y:\AlcoReserv");
+                НоваяСтрокаСтраницы.SubItems.Add(НоваяБазаДанных.ИмяПользователя);
+            }
+            else
+            {
+                MessageBox.Show("FAIL");
+            }
+        }
+    }
+}
+

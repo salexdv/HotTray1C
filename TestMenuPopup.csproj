@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B25EF6E-6AD0-4FB1-966B-1531214CB2B8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestMenuPopup</RootNamespace>
+    <AssemblyName>Hot tray 1C NET</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>Main.ico</ApplicationIcon>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <NoWin32Manifest>False</NoWin32Manifest>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\Alex\Application Data\ICSharpCode/SharpDevelop4\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>True</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HotTray1CNET.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <BaseAddress>4194304</BaseAddress>
+    <RegisterForComInterop>False</RegisterForComInterop>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBUsers.cs" />
+    <Compile Include="iBasesEdit.cs" />
+    <Compile Include="installer1C.cs" />
+    <Compile Include="UserActivityHook.cs" />
+    <Compile Include="ФормаВнешнегоПриложения.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаВнешнегоПриложения.Designer.cs">
+      <DependentUpon>ФормаВнешнегоПриложения.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаОбновления.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>ФормаОбновления.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainStruct.cs">
+      <CustomToolNamespace>MainStruct</CustomToolNamespace>
+    </Compile>
+    <Compile Include="MyHotKey.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyHotKey.Designer.cs">
+      <DependentUpon>MyHotKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаМонитора.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаМонитора.Designer.cs">
+      <DependentUpon>ФормаМонитора.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаОПрограмме.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаОПрограмме.Designer.cs">
+      <DependentUpon>ФормаОПрограмме.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаПодбораБазДанных.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаПодбораБазДанных.Designer.cs">
+      <DependentUpon>ФормаПодбораБазДанных.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаПоискаБаз.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаПоискаБаз.Designer.cs">
+      <DependentUpon>ФормаПоискаБаз.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаПриложения.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаПриложения.Designer.cs">
+      <DependentUpon>ФормаПриложения.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MyHotKey.resx">
+      <DependentUpon>MyHotKey.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаВнешнегоПриложения.resx">
+      <DependentUpon>ФормаВнешнегоПриложения.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаВыбораГруппы.resx">
+      <DependentUpon>ФормаВыбораГруппы.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаМонитора.resx">
+      <DependentUpon>ФормаМонитора.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаОбновления.resx">
+      <DependentUpon>ФормаОбновления.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаОПрограмме.resx">
+      <DependentUpon>ФормаОПрограмме.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаПодбораБазДанных.resx">
+      <DependentUpon>ФормаПодбораБазДанных.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаПоискаБаз.resx">
+      <DependentUpon>ФормаПоискаБаз.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаПриложения.resx">
+      <DependentUpon>ФормаПриложения.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаБазыДанных.resx">
+      <DependentUpon>ФормаБазыДанных.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ФормаГруппы.resx">
+      <DependentUpon>ФормаГруппы.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="HotTray1CNET.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ФормаБазыДанных.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаБазыДанных.Designer.cs">
+      <DependentUpon>ФормаБазыДанных.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаГруппы.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаГруппы.Designer.cs">
+      <DependentUpon>ФормаГруппы.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ФормаВыбораГруппы.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ФормаВыбораГруппы.Designer.cs">
+      <DependentUpon>ФормаВыбораГруппы.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Main.ico" />
+    <None Include="Resources\Режим34.png" />
+    <None Include="Resources\ToolTips.txt" />
+    <None Include="Resources\Режим04.png" />
+    <None Include="Resources\Режим03.png" />
+    <None Include="Resources\Режим02.png" />
+    <None Include="Resources\Режим01.png" />
+    <None Include="Resources\ТонкийКлиент.png" />
+    <None Include="Resources\ТолстыйКлиент.png" />
+    <None Include="Resources\Автоматически.png" />
+    <None Include="Resources\ТолстыйКлиент.ico" />
+    <None Include="Resources\Автоматически.ico" />
+    <None Include="Resources\ТонкийКлиент.ico" />
+    <None Include="Resources\ДопПользователь.png" />
+    <None Include="Resources\ВопросSmall.png" />
+    <None Include="Resources\УстановитьРежимSmall.png" />
+    <None Include="Resources\НеОтображать.png" />
+    <None Include="Resources\Отображать.png" />
+    <None Include="Resources\Монитор32.png" />
+    <None Include="Resources\МониторПользователей.png" />
+    <None Include="Resources\БазаОтсутствует.png" />
+    <None Include="Resources\Монопольный.bmp" />
+    <None Include="Resources\Разделенный.bmp" />
+    <None Include="Resources\Режим32.png" />
+    <None Include="Resources\Режим31.png" />
+    <None Include="Resources\Режим22.png" />
+    <None Include="Resources\Режим21.png" />
+    <None Include="Resources\Режим12.png" />
+    <None Include="Resources\Режим11.png" />
+    <None Include="app.config" />
+    <None Include="Resources\folder_editSmall.png" />
+    <None Include="Resources\big_folderSmall.png" />
+    <None Include="Resources\folderSmall.png" />
+    <None Include="Resources\SmallSearch.png" />
+    <None Include="Resources\Brick2.bmp" />
+    <None Include="Resources\Brick.bmp" />
+    <None Include="Resources\SmallEdit.png" />
+    <None Include="Resources\SmallAdd.png" />
+    <None Include="Resources\SmallRemove.png" />
+    <None Include="Resources\82.png" />
+    <None Include="Resources\81.png" />
+    <None Include="Resources\80.png" />
+    <None Include="Resources\77.png" />
+    <None Include="Resources\small-info.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\Cancel.png" />
+    <None Include="Resources\OK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
